@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            padding-top: 56px;
+            /* Adjusted for the fixed top navbar */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #343a40;
+            padding: 20px 0;
+            text-align: left;
+            color: #fff;
+        }
+
+        .restaurant-section {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .food-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .food-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-btn {
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin: 0;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Food Management Factory</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="FoodHome.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Menu <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Restaurant Menu Section -->
+    <div class="container restaurant-section">
+        <!-- Food Item 1 -->
+        <div class="food-item">
+            <div class="col-md-6">
+                <h4>Biriyani(Chicken/Mutton)</h4>
+                <p>Price: ₹200</p>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <select class="form-control" id="quantity1" onchange="updateTotal()">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="biriyani.jpg" alt="biriyani(Chicken/Mutton)" class="food-image">
+            </div>
+        </div>
+
+        <!-- Food Item 2 -->
+        <div class="food-item">
+            <div class="col-md-6">
+                <h4>Salad</h4>
+                <p>Price: ₹50</p>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                    <select class="form-control" id="quantity2" onchange="updateTotal()">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="Salad.jpeg" alt="Salad" class="food-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <section id="contact">
+            <div class="container">
+                <p>Contact us at: contact@example.com | Phone: (123) 456-7890</p>
+            </div>
+        </section>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        function increaseQuantity() {
+            var quantitySelect = document.getElementById("quantity1");
+            quantitySelect.selectedIndex = Math.min(quantitySelect.selectedIndex + 1, quantitySelect.length - 1);
+            updateTotal();
+        }
+
+
+        function decreaseQuantity() {
+            var quantitySelect = document.getElementById("quantity1");
+            quantitySelect.selectedIndex = Math.max(quantitySelect.selectedIndex - 1, 0);
+            updateTotal();
+        }
+
+        function updateTotal() {
+            // You can add logic here to update the total based on the selected quantity
+        }
+    </script>
+</body>
+
+</html>

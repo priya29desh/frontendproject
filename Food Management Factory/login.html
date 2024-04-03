@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Login</title>
+  <style>
+    body{
+      background-color: #f4f4f4;
+    }
+
+    .login-container
+    {
+      margin-top: 100px;
+    }
+
+    .login-form
+    {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ded9d9;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Login Page</h1>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Food Management Factory</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="FoodHome.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="login.html">Log In <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="signup.html">Sign Up <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+  <div class="container login-container">
+    <form class="login-form">
+      <h2>Login</h2>
+        <div class="form-group">
+        <label for="username">Username:</label>
+        <input class="form-control" type="text" placeholder="Enter username" 
+        id="username" name="username" required minlength="2" maxlength="20">
+        </div>
+        
+        <div class="form-group">
+        <label for="password">Password:</label>
+        <input class="form-control" type="password" placeholder="Enter password"
+         id="password" name="password" required minlength="6" maxlength="20">
+        </div>
+
+      <button class="btn btn-success" type="submit" onclick="checkLogin()">Login</button>
+        <br>
+      <p class="signup-link">Don't have an account? <a href="signup.html">Signup</a></p>
+    </form>
+
+    
+  </div>
+  <script>
+    // Array of username-password pairs
+    var userCredentials = [
+        { username: 'Saswata Banerjee', password: 'sas123' },
+        { username: 'Nilarghya Kabiraj', password: 'pass2' },
+        // Add more pairs as needed
+    ];
+
+    function checkLogin() {
+        // Get the entered username and password
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        // Check if the entered username and password match any pair in the array
+        var isValidCredentials = false;
+        for (var i = 0; i < userCredentials.length; i++) {
+            if (userCredentials[i].username === username && userCredentials[i].password === password) {
+                isValidCredentials = true;
+                break;
+            }
+        }
+
+        // Display an alert message based on the result
+        if (isValidCredentials) {
+            alert('Login successful! Welcome ' + username);
+        } else {
+            alert('Incorrect username or password. Please try again.');
+        }
+    }
+</script>
+</body>
+
+</html>
+

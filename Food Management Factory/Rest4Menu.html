@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Restaurant Menu</title>
+  <style>
+    body {
+      padding-top: 56px; /* Adjusted for the fixed top navbar */
+    }
+
+    .food-item {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .food-image {
+      width: 150px;
+      height: 150px; /* Adjust the height as needed */
+      object-fit: cover;
+      margin-right: 20px;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-btn {
+      cursor: pointer;
+      background-color: #5d82a9;
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      margin: 0;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+    footer {
+            background-color: #343a40;
+            padding: 20px 0;
+            text-align: center;
+            color: #fff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Food Management Factory</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="FoodHome.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Menu.html">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact <span class="sr-only">(current)</span></a>
+      </li>
+
+        <!-- Add more navigation links as needed -->
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Restaurant Menu Section -->
+  <div class="container mt-4">
+    <!-- Food Item 1 -->
+    <div class="food-item">
+      <div class="col-md-6">
+        <h4>Chicken Pakora</h4>
+        <p>Price: ₹35</p>
+        <div class="quantity-control">
+          <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+          <select class="form-control" id="quantity1" onchange="updateTotal()">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="Chicken-Pakora.jpg" alt="Chicken-Pakora" class="food-image">
+      </div>
+    </div>
+
+    <!-- Food Item 2 -->
+    <div class="food-item">
+      <div class="col-md-6">
+        <h4>Fish-Fry</h4>
+        <p>Price: ₹110</p>
+        <div class="quantity-control">
+          <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+          <select class="form-control" id="quantity2" onchange="updateTotal()">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <img src="Fish-Fry.jpg" alt="Fish-Fry" class="food-image">
+      </div>
+    </div>
+
+    <!-- Add more food items as needed -->
+  </div>
+ <!-- Footer Section -->
+ <footer>
+  <section id="contact">
+      <div class="container">
+          <p>Contact us at: contact@example.com | Phone: (123) 456-7890</p>
+      </div>
+  </section>
+</footer>
+  <!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <script>
+    function increaseQuantity() {
+      var quantitySelect = document.getElementById("quantity1");
+      quantitySelect.selectedIndex = Math.min(quantitySelect.selectedIndex + 1, quantitySelect.length - 1);
+      updateTotal();
+    }
+
+    function decreaseQuantity() {
+      var quantitySelect = document.getElementById("quantity1");
+      quantitySelect.selectedIndex = Math.max(quantitySelect.selectedIndex - 1, 0);
+      updateTotal();
+    }
+
+    function updateTotal() {
+      // You can add logic here to update the total based on the selected quantity
+    }
+  </script>
+</body>
+
+</html>
